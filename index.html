@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Glam</title>
+</head>
+    <body>
+        <div class="video-container">
+            <video controls muted loop autoplay poster="путь_к_постеру.jpg" id="lazy-video" controls="false">
+                <source data-src="media/back.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var lazyVideo = document.getElementById('lazy-video');
+                var source = lazyVideo.querySelector('source');
+                source.src = source.getAttribute('data-src');
+                lazyVideo.load();
+                });
+          </script>
+
+
+        <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+        <div id="appleid-signin" data-color="white" data-border="false" data-type="sign in"></div>
+        <script type="text/javascript">
+            const serverURL = '/payment.html'
+
+            AppleID.auth.init({
+                clientId : 'app.getglam.api',
+                scope : 'email',
+                redirectURI : serverURL,
+                state : 'initial',
+                nonce : 'somenonce',
+                usePopup : true
+            });
+            // Listen for authorization success.
+            document.addEventListener('AppleIDSignInOnSuccess', (event) => {
+                console.log("success sign in")
+                // Handle successful response.
+                let authPayload = event.detail.authorization
+                fetch(serverURL, {
+                    method: "POST", 
+                    headers: {"Content-Type": "application/x-www-form-urlencoded"}, 
+                    body: new URLSearchParams({"code": authPayload.code}),
+                })
+                .then(data => {
+                    console.log(data.ok); // Valid data
+                    
+                })
+                .catch(err => console.log(err)) // Invalid data
+            });
+            // Listen for authorization failures.
+            document.addEventListener('AppleIDSignInOnFailure', (event) => {
+                // Handle error.
+                console.log("failed sign in")
+                console.log(event);
+            });
+        </script>
+    </body>
+</html>
