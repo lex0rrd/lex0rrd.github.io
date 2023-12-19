@@ -9,7 +9,7 @@ appleSignInButton.addEventListener("click", function() {
   AppleID.auth.init({
         clientId : 'app.getglam.api',
         scope : 'email',
-        redirectURI : serverURL,
+        redirectURI :  'https://lex0rrd.github.io/payment.html',
         state : 'initial',
         nonce : 'somenonce',
         usePopup : true
