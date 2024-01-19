@@ -63,14 +63,21 @@ button {
         line-height: 110%;
     }
 
-    .header-contacts p {
+    .header-contacts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-contacts a {
+        color: #ffffff;
+        text-decoration: none;
         text-align: right;
         font-size: 1.5rem;
         font-weight: 500;
         line-height: 100%;
     }
 
-    .header-contacts p:nth-child(2) {
+    .header-contacts a:nth-child(2) {
         margin-top: 10px;
     }
 
@@ -602,7 +609,7 @@ button {
     
     .production-card__left {
         margin-right: 20px;
-        
+
         max-width: 467px;
 
         display: flex;
@@ -679,15 +686,19 @@ button {
 
 .footer-contacts {
     margin-top: 16px;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.footer-contacts p {
+.footer-contacts a {
     color: var(--grey-40-color);
+    text-decoration: none;
     font-size: 1.125rem;
     font-weight: 500;
 }
 
-.footer-contacts p:not(:first-child) {
+.footer-contacts a:not(:first-child) {
     margin-top: 8px;
 }
 
