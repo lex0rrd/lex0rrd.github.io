@@ -601,6 +601,8 @@ button {
     }
     
     .production-card__left {
+        margin-right: 20px;
+        
         max-width: 467px;
 
         display: flex;
