@@ -348,7 +348,8 @@ button {
     }
 
     .aboutus-bottom__top-item:nth-child(3) {
-        left: 38%;
+        left: 50%;
+        transform:translateX(-50%)
     }
 
     .aboutus__item-top {
