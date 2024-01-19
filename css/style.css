@@ -298,7 +298,7 @@ button {
         position: absolute;
         padding: 16px 24px;
 
-        max-width: 414px;
+        width: calc(100% - 949px);
         min-width: 284px;
 
         display: flex;
